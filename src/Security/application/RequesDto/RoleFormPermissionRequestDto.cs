@@ -1,0 +1,9 @@
+namespace Somnguard.Backend.Security.application.RequesDto
+{
+    public class RoleFormPermissionRequestDto
+    {
+        public Guid RoleId { get; set; }
+        public Guid FormId { get; set; }
+        public Guid PermissionId { get; set; }
+    }
+}
