@@ -1,4 +1,4 @@
-namespace Somnguard.Backend.Security.application.RequesDto
+namespace Somnguard.Backend.Security.application.Dto.RequesDto
 {
     public class FormModuleRequestDto
     {
