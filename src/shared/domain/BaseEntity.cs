@@ -7,7 +7,7 @@ public abstract class BaseEntity
     public DateTimeOffset? UpdatedAt { get; set; }
     public DateTimeOffset? DeletedAt { get; set; }
     
-    //agregamos campos para auditoría
+    //campos para auditoría
     public Guid? CreatedBy { get; set; }
     public Guid? UpdatedBy { get; set; }
     public Guid? DeletedBy { get; set; }

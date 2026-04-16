@@ -1,4 +1,4 @@
-﻿using Somnguard.Backend.Modules.Auth.Domain;
+﻿using Somnguard.Backend.Security.domain;
 using Somnguard.Backend.Shared.Domain;
 
 namespace Somnguard.Backend.Security.domain

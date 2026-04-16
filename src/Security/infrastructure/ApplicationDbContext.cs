@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Somnguard.Backend.Security.domain;
-using Somnguard.Backend.Modules.Auth.Domain;
+
 
 namespace Somnguard.Backend.Security.infrastructure
 {

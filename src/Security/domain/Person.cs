@@ -1,7 +1,7 @@
 using Somnguard.Backend.Security.domain;
 using Somnguard.Backend.Shared.Domain;
 
-namespace Somnguard.Backend.Modules.Auth.Domain;
+namespace Somnguard.Backend.Security.domain;
 
 public class Person : BaseEntity
 {
