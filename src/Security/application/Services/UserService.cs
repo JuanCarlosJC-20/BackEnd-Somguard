@@ -1,6 +1,8 @@
 using AutoMapper;
+using BCrypt.Net;
 using Somnguard.Backend.Security.application.Dto.RequesDto;
 using Somnguard.Backend.Security.application.Dto.ResponseDto;
+using Somnguard.Backend.Security.domain;
 using Somnguard.Backend.Security.infrastructure.Repository;
 
 namespace Somnguard.Backend.Security.application.Services
@@ -30,12 +32,13 @@ namespace Somnguard.Backend.Security.application.Services
 
         public async Task<UserResponseDto> CreateAsync(UserRequestDto dto)
         {
-            var user = _mapper.Map<Somnguard.Backend.Security.domain.User>(dto);
+            var user = _mapper.Map<User>(dto);
 
-            // Importante: aquí luego deberías hashear el password (no guardarlo plano).
+              // Hashear el password antes de guardar
+            user.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+
             var created = await _userRepository.CreateAsync(user);
-
-            return _mapper.Map<UserResponseDto>(created);
+                return _mapper.Map<UserResponseDto>(created);
         }
 
         public async Task<UserResponseDto> UpdateAsync(Guid id, UserRequestDto dto)
@@ -43,7 +46,7 @@ namespace Somnguard.Backend.Security.application.Services
             var existing = await _userRepository.GetByIdAsync(id);
 
             existing.Email = dto.Email;
-            existing.Password = dto.Password; // luego: hash
+            existing.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password); // luego: hash
             existing.PersonId = dto.PersonId;
 
             await _userRepository.SaveChangesAsync();
